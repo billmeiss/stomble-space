@@ -20,7 +20,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       planet
     },
     status
-  }
+  };
 
   try {
     const spaceShipLimit = await db
@@ -58,7 +58,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       res.status(400).send('Location is full');
     }
   } catch (e) {
-    res.status(404).send(e)
-    console.log(e)
+    res.status(404).send(e);
+    console.log(e);
   }
 }

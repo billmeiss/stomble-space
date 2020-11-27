@@ -38,7 +38,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       .toArray();
 
     if (shipDetails[0].status !== 'operational') {
-      return res.status(400).send('Ship is not operational')
+      return res.status(400).send('Ship is not operational');
     }
 
     if (
@@ -83,7 +83,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       res.status(400).send('Location is full');
     }
   } catch (e) {
-    res.status(404).send(e)
-    console.log(e)
+    res.status(404).send(e);
   }
 }

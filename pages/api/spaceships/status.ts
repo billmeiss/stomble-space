@@ -10,7 +10,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     status
   } = req.body;
 
-  const id: ObjectID = new ObjectID(shipId)
+  const id: ObjectID = new ObjectID(shipId);
 
   try {
     const updatedStatus = await db
@@ -21,8 +21,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         }
       });
 
-    res.status(200).send(updatedStatus)
+    res.status(200).send(updatedStatus);
   } catch (e) {
-    res.status(404).send(e)
+    res.status(404).send(e);
   }
 }

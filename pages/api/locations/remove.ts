@@ -9,15 +9,15 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     locationId
   } = req.body;
 
-  const id: ObjectID = new ObjectID(locationId)
+  const id: ObjectID = new ObjectID(locationId);
 
   try {
     const deleteStatus = await db
       .collection('locations')
       .deleteOne({ _id: id });
 
-    res.status(200).send(deleteStatus)
+    res.status(200).send(deleteStatus);
   } catch (e) {
-    res.status(404).send(e)
+    res.status(404).send(e);
   }
 }

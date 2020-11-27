@@ -24,8 +24,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       .collection('locations')
       .insertOne(locationDetails);
 
-    res.status(200).send(addLocation)
+    res.status(200).send(addLocation);
   } catch (e) {
-    res.status(404).send(e)
+    res.status(404).send(e);
   }
 }

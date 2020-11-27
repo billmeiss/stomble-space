@@ -9,16 +9,15 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     shipId
   } = req.body;
 
-  type ObjectId = typeof ObjectID;
-  const id: ObjectID = new ObjectID(shipId)
-  
+  const id: ObjectID = new ObjectID(shipId);
+
   try {
     const deleteStatus = await db
-      .collection("spaceships")
+      .collection('spaceships')
       .deleteOne({ _id: id });
 
-    res.status(200).send(deleteStatus)
+    res.status(200).send(deleteStatus);
   } catch (e) {
-    res.status(404).send(e)
+    res.status(404).send(e);
   }
 }
