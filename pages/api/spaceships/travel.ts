@@ -14,6 +14,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const id: ObjectID = new ObjectID(shipId);
 
+    // Below, we will query the current status and location of
+    // the ship. We query the location to decrement the amount
+    // of ships in the spaceport. We query the status to check
+    // if the ship is operational. If both conditions are met
+    // we can change the location of the ship.
     const shipDetails = await db
       .collection('spaceships')
       .find({
@@ -41,9 +46,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       return res.status(400).send('Ship is not operational');
     }
 
+    // Only add a spaceship to a location if the spaceport is not full
     if (
       spaceShipLimit[0].ships < spaceShipLimit[0].spaceportCap
     ) {
+      // Decrease the amount of ships in the old location
       await db
         .collection('locations')
         .updateOne({
@@ -68,6 +75,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           }
         });
 
+      // increase the amount of ships in the new location
       await db
         .collection('locations')
         .updateOne({

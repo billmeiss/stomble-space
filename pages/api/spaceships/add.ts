@@ -23,6 +23,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   };
 
   try {
+    // Find the spaceport capacity and the instantaneous amount of ships at the location
     const spaceShipLimit = await db
       .collection('locations')
       .find({
@@ -37,6 +38,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
     console.log(spaceShipLimit)
 
+    // Only add a spaceship to a location if the spaceport is not full
     if (spaceShipLimit[0].ships < spaceShipLimit[0].spaceportCap) {
       const addedSpaceship = await db
         .collection('spaceships')

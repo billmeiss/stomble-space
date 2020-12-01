@@ -9,6 +9,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     shipId
   } = req.body;
 
+  // use the MongoDB ObjectID type
+  // must be wrapped around a string when querying by an id
   const id: ObjectID = new ObjectID(shipId);
 
   try {
