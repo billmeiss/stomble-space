@@ -1,27 +1,42 @@
-## Example app using MongoDB
+## API Documentation
 
-[MongoDB](https://www.mongodb.com/) is a general purpose, document-based, distributed database built for modern application developers and for the cloud era. This example will show you how to connect to and use MongoDB as your backend for your Next.js app.
+### Add a spaceship
+#### POST
+#### Parameters
+- Name (String)
+- City (String)
+- Planet (String)
+- Status (String) - Must be 'Decomissioned', 'Maintenance' or 'Operational'
 
-If you want to learn more about MongoDB, visit the following pages:
+### Delete a spaceship
+#### DELETE
+#### Parameters
+- Spaceship Id (String)
 
-- [MongoDB Atlas](https://mongodb.com/atlas)
-- [MongoDB Documentation](https://docs.mongodb.com/)
+### Update the status of a spaceship
+#### PATCH
+#### Parameters
+- Spaceship Id (String)
+- Status (String) - Must be 'Decomissioned', 'Maintenance' or 'Operational'
 
-## Deploy your own
+### Change the destination of a spacehsip
+#### PATCH
+#### Parameters
+- Spaceship Id (String)
+- City (String) - New city of intended arrival
+- Planet (String) - New planet of intended arrival
 
-Once you have access to the environment variables you'll need, deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
+### Add a location
+#### POST
+#### Parameters
+- Capacity (Integer) - Spaceship capacity of location
+- City (String)
+- Planet (String)
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?c=1&s=https://github.com/vercel/next.js/tree/canary/examples/with-mongodb&env=MONGODB_URI,MONGODB_DB&envDescription=Required%20to%20connect%20the%20app%20with%20MongoDB)
-
-## How to use
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
-
-```bash
-npx create-next-app --example with-mongodb with-mongodb
-# or
-yarn create next-app --example with-mongodb with-mongodb
-```
+### Remove a location
+#### DELETE
+#### Parameters
+- Location Id (String)
 
 ## Configuration
 
@@ -30,17 +45,12 @@ yarn create next-app --example with-mongodb with-mongodb
 Set up a MongoDB database either locally or with [MongoDB Atlas for free](https://mongodb.com/atlas).
 
 ### Set up environment variables
-
-Copy the `env.local.example` file in this directory to `.env.local` (which will be ignored by Git):
-
-```bash
-cp .env.local.example .env.local
 ```
 
-Set each variable on `.env.local`:
+Set each variable on `.env`:
 
 - `MONGODB_URI` - Your MongoDB connection string. If you are using [MongoDB Atlas](https://mongodb.com/atlas) you can find this by clicking the "Connect" button for your cluster.
-- `MONGODB_DB` - The name of the MongoDB database you want to use.
+- `MONGODB_DB` - Stomble
 
 ### Run Next.js in development mode
 
@@ -59,19 +69,3 @@ Your app should be up and running on [http://localhost:3000](http://localhost:30
 You will either see a message stating "You are connected to MongoDB" or "You are NOT connected to MongoDB". Ensure that you have provided the correct `MONGODB_URI` and `MONGODB_DB` environment variables.
 
 When you are successfully connected, you can refer to the [MongoDB Node.js Driver docs](https://mongodb.github.io/node-mongodb-native/3.4/tutorials/collections/) for further instructions on how to query your database.
-
-## Deploy on Vercel
-
-You can deploy this app to the cloud with [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
-
-#### Deploy Your Local Project
-
-To deploy your local project to Vercel, push it to GitHub/GitLab/Bitbucket and [import to Vercel](https://vercel.com/import/git?utm_source=github&utm_medium=readme&utm_campaign=next-example).
-
-**Important**: When you import your project on Vercel, make sure to click on **Environment Variables** and set them to match your `.env.local` file.
-
-#### Deploy from Our Template
-
-Alternatively, you can deploy using our template by clicking on the Deploy button below.
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?c=1&s=https://github.com/vercel/next.js/tree/canary/examples/with-mongodb&env=MONGODB_URI,MONGODB_DB&envDescription=Required%20to%20connect%20the%20app%20with%20MongoDB)
